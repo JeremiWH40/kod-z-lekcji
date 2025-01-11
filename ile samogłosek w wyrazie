@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string text;
+    cin >> text;
+
+    int sam = 0; // Initialize the vowel counter to 0
+
+    for (int i = 0; i < text.length(); i++) {
+        char lower_char = tolower(text[i]);
+
+        if (lower_char == 'o' || lower_char == 'a' || lower_char == 'e' || lower_char == 'i' || lower_char == 'y' || lower_char == 'u') {
+            sam++;
+        }
+    }
+
+    cout << "Zdanie to ma: " << sam << " samogłosk" << (sam == 1 ? "ę" : "i") << endl;
+
+    return 0;
+}
