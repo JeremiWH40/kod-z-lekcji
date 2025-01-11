@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string text;
+    getline(cin, text);
+    string text_true = "";
+    string word;
+    stringstream ss(text);
+
+    while (ss >> word) {
+        if (word.length() < 3) {
+            reverse(word.begin(), word.end());
+        }
+        if (!text_true.empty()) {
+            text_true += " ";
+        }
+        text_true += word;
+    }
+
+    int word_length = 0;
+    int total_length = 0;
+
+    for (int i = 0; i < text.length(); i++) {
+        if (text[i] != ' ') {
+            word_length++;
+            total_length++;
+        } else {
+            if (word_length > 0) {
+                cout << "Ilość Wyrazów: " << word_length << ", Dotychczasowa Długość: " << total_length << endl;
+            }
+            word_length = 0;
+        }
+    }
+
+    if (word_length > 0) {
+        cout << "Ilość Wyrazów: " << word_length << ", Dotychczasowa Długość : " << total_length << endl;
+    }
+
+    cout << "Originalny text: " << text << endl;
+    cout << "Przetwożony text: " << text_true << endl;
+
+    return 0;
+}
